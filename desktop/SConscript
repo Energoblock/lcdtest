@@ -1,0 +1,79 @@
+# SConscript for lcdtest
+# $Id: SConscript 40 2010-01-24 20:37:04Z eric $
+# Copyright 2010 Eric Smith <eric@brouhaha.com>
+
+# lcdtest is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation.  Note that I am not
+# granting permission to redistribute or modify lcdtest under the
+# terms of any later version of the General Public License.
+
+# lcdtest is distributed in the hope that they will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import os
+
+Import('env')
+
+#-----------------------------------------------------------------------------
+# render SVG icon as PNG in various sizes
+#-----------------------------------------------------------------------------
+
+svg2png_builder = Builder (action = "convert -antialias -background none -resize $SIZE $SOURCE $TARGET")
+env.Append (BUILDERS = {'SVG2PNG' : svg2png_builder})
+
+png_icon_sizes = [str (n) for n in [16, 22, 24, 32, 48]]
+
+png_icons = { }
+for size in png_icon_sizes:
+    png_icons [size] = env.SVG2PNG ('lcdtest-' + size + '.png',
+                                    'lcdtest.svg',
+                                    SIZE = size)
+#    env.Default (png_icons [size])
+
+#-----------------------------------------------------------------------------
+# install
+#-----------------------------------------------------------------------------
+
+env.Alias (target = 'install',
+           source = env.Install (dir = (env ['BUILDROOT'] +
+                                        os.path.join (env ['PREFIX'],
+                                                      env ['DATADIR'],
+                                                      'applications')),
+                                 source = 'lcdtest.desktop'))
+
+env.Alias (target = 'install',
+           source = env.Install (dir = (env ['BUILDROOT'] +
+                                        os.path.join (env ['PREFIX'],
+                                                      env ['DATADIR'],
+                                                      'icons',
+						      'hicolor',
+                                                      'scalable',
+						      'apps')),
+                                 source = 'lcdtest.svg'))
+
+#for size in png_icon_sizes:
+#    env.Alias (target = 'install',
+#               source = env.InstallAs (target = (env ['BUILDROOT'] +
+#                                                 os.path.join (env ['PREFIX'],
+#                                                               env ['DATADIR'],
+#                                                               'icons',
+#                                                               'hicolor',
+#                                                               size + 'x' + size,
+#                                                               'apps',
+#                                                               'lcdtest.png')),
+#                                       source = png_icons [size]))
+
+#-----------------------------------------------------------------------------
+# source tarball
+#-----------------------------------------------------------------------------
+
+dist_files = Split ("""SConscript lcdtest.desktop lcdtest.svg""")
+
+env.Tarball (env ['source_release_tarball'], dist_files)
+env.Tarball (env ['source_snapshot_tarball'], dist_files)

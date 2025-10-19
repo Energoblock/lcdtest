@@ -1,0 +1,74 @@
+# SConscript for lcdtest
+# $Id: SConscript 45 2010-01-26 06:41:22Z eric $
+# Copyright 2004, 2005, 2006, 2007, 2009, 2010 Eric Smith <eric@brouhaha.com>
+
+# lcdtest is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation.  Note that I am not
+# granting permission to redistribute or modify lcdtest under the
+# terms of any later version of the General Public License.
+
+# lcdtest is distributed in the hope that they will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see see <http://www.gnu.org/licenses/>.
+
+import os
+
+Import('env')
+
+#-----------------------------------------------------------------------------
+# compile and link
+#-----------------------------------------------------------------------------
+
+headers = []
+srcs = Split ("""lcdtest.c""")
+
+objs = [env.Object(src) for src in srcs]
+
+# respect the environment CFLAGS if given
+if 'CFLAGS' in ARGUMENTS:
+    env.MergeFlags (ARGUMENTS ['CFLAGS'])
+elif 'CFLAGS' in os.environ:
+    env.MergeFlags (os.environ ['CFLAGS'])
+else:
+    env.Append (CCFLAGS = ['-g', '-Wall', '-Wextra'])
+
+env.Append (LIBS = ['SDL', 'SDL_image', 'SDL_ttf']);
+
+env.Append (CPPDEFINES = [ ('RELEASE', env ['RELEASE'])])
+
+lcdtest = env.Program (target = 'lcdtest',
+                       source = objs)
+
+#-----------------------------------------------------------------------------
+# default targets
+#-----------------------------------------------------------------------------
+
+default_targets = [lcdtest]
+
+Default (default_targets)
+
+#-----------------------------------------------------------------------------
+# install
+#-----------------------------------------------------------------------------
+
+env.Alias (target = 'install',
+           source = env.Install (dir = (env ['BUILDROOT'] +
+                                        os.path.join (env ['PREFIX'],
+                                                      env ['BINDIR'])),
+                                 source = default_targets))
+
+#-----------------------------------------------------------------------------
+# source tarball
+#-----------------------------------------------------------------------------
+
+misc = Split ("""SConscript""")
+
+dist_files = (misc + headers + srcs)
+
+env.Tarball (env ['source_release_tarball'], dist_files)
+env.Tarball (env ['source_snapshot_tarball'], dist_files)

@@ -1,0 +1,21 @@
+lcdtest: LCD monitor test pattern generator
+INSTALL
+Copyright 2007, 2009, 2010 Eric Smith <eric@brouhaha.com>
+$Id: INSTALL 44 2010-01-26 06:28:14Z eric $
+
+
+Building lcdtest uses SCons and Python, rather than Make.  SCons
+is used because it has automatic dependency analysis.
+SCons version 1.20 or newer is required.
+
+To build lcdtest, simply type "scons".  This will result in the
+binary being built in the "build" subdirectory.
+
+The binary can be tested by running "build/lcdtest".
+
+To install the binary and man page in the default locations (/usr/local/bin
+and /usr/local/share/man/man1), type "scons install".
+
+To install in other locations, use the prefix, bindir, mandir, and
+datadir command-line arguments to scons.  For instance, to use
+/usr/bin and /usr/man, type "scons install prefix=/usr mandir=man"

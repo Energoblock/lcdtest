@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=lcdtest
+GenericName=LCD Test Pattern Generator
+Exec=lcdtest
+Icon=lcdtest
+Terminal=false
+Type=Application
+Categories=Graphics;

@@ -1,0 +1,57 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH LCDTEST 1 "October 1, 2005"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+lcdtest \- a utility to display LCD monitor test patterns
+.SH SYNOPSIS
+.B lcdtest
+.RI [ options ]
+.SH DESCRIPTION
+This manual page documents briefly the
+.B lcdtest
+command.
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBlcdtest\fP is a program that may be useful for adjusting the pixel clock 
+frequency and phase on LCD monitors when using analog inputs, and for finding 
+pixels that are stuck on or off. lctest uses the SDL library
+.SH OPTIONS
+These programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+.TP
+.B \-h, \-\-help
+get list of command keys.
+.TP
+.B \-\-list\-modes
+list available video resolutions
+.TP
+.B \-\-window
+display in a window rather than full screen.
+.TP
+.B \-x <count> 
+use a video mode with the specified horizontal resolution
+.TP
+.B \-y <count>
+use a video mode with the specified vertical resolution
+.SH AUTHOR
+lcdtest was written by Eric Smith <eric@brouhaha.com>.
+.PP
+This manual page was written by Valerio Felici <valerio@bgweb.it>,
+for the Debian project (but may be used by others).

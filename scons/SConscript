@@ -1,0 +1,28 @@
+# SConscript for lcdtest
+# $Id: SConscript 45 2010-01-26 06:41:22Z eric $
+# Copyright 2004, 2007, 2010 Eric Smith <eric@brouhaha.com>
+
+# lcdtest is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation.  Note that I am not
+# granting permission to redistribute or modify lcdtest under the
+# terms of any later version of the General Public License.
+
+# lcdtest is distributed in the hope that they will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Import('env')
+
+#-----------------------------------------------------------------------------
+# source tarball
+#-----------------------------------------------------------------------------
+
+dist_files = Split ("""SConscript tarball.py""")
+
+env.Tarball (env ['source_release_tarball'], dist_files)
+env.Tarball (env ['source_snapshot_tarball'], dist_files)

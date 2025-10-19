@@ -1,12 +1,5 @@
-# Explanation
-This is a complete  copy of the source  codes  from  http://www.brouhaha.com/~eric/software/lcdtest/ 
-Since the author's  website is currently  unavailable,  the  source  codes have been  moved  to  github.
-
-
-# lcdtest
-
 lcdtest: LCD monitor test pattern generator
-
+README
 Copyright 2005, 2007, 2010 Eric Smith <eric@brouhaha.com>
 $Id: README 44 2010-01-26 06:28:14Z eric $
 
@@ -17,12 +10,12 @@ monitors when using analog inputs, and for finding pixels that are
 stuck on or off.  lctest uses the SDL library.
 
 
-## Usage:
+Usage:
 
   lcdtest [options]
 
 
-## Options:
+Options:
 
   --help         get list of command keys
   --list-modes   list available video resolutions
@@ -31,37 +24,35 @@ stuck on or off.  lctest uses the SDL library.
   -y <count>     use a video mode with the specified vertical resolution
 
 
-## Operation:
+Operation:
 
   Upon startup, lcdtest will fill the screen solid red.  Pressing keys on
   the keyboard will change the pattern:
 
- 
+    Change foreground color:
+        r:  red
+        g:  green
+        b:  blue
+        w:  white
+        k:  black
+    
+    Change pattern:
+        s:  solid fill
+        h:  horizontal lines
+        v:  vertical lines
+        c:  crosshatch
+ 	x:  diagonal crosshatch
+	a:  white vertical lines with two pixel pitch
 
-       Change foreground color:
-            r:  red
-            g:  green
-            b:  blue
-            w:  white
-            k:  black
-    
-        Change pattern:
-            s:  solid fill
-            h:  horizontal lines
-            v:  vertical lines
-            c:  crosshatch
-	    x:  diagonal crosshatch
-	    a:  white vertical lines with two pixel pitch
-    
-        arrow keys: move lines in arrow direction
-    
-        plus:   increase spacing between lines
-        minus:  decrease spacing between lines
-        0..9:   select predefined line spacings
-    
-        ? or /:  toggle display of help message
-    
-        q or Escape: exit program
+    arrow keys: move lines in arrow direction
+
+    plus:   increase spacing between lines
+    minus:  decrease spacing between lines
+    0..9:   select predefined line spacings
+
+    ? or /:  toggle display of help message
+
+    q or Escape: exit program
 
 
   The "a" command is specifically intended for use with LCD monitors
@@ -71,7 +62,7 @@ stuck on or off.  lctest uses the SDL library.
   also useful for manual adjustment.
 
 
-## Dependencies:
+Dependencies:
 
   libSDL:
     http://www.libsdl.org/
@@ -80,7 +71,7 @@ stuck on or off.  lctest uses the SDL library.
     http://www.linux-games.com/sfont/
 
 
-## Incompatible library versions:
+Incompatible library versions:
 
   Slava Semushin discovered that some versions of libSDL_image 1.2.5 have
   a bug that can cause lcdtest to crash with a segmentation fault.  The
@@ -88,20 +79,20 @@ stuck on or off.  lctest uses the SDL library.
     http://bugzilla.libsdl.org/show_bug.cgi?id=284
 
 
-## Binary distribution:
+Binary distribution:
 
   The author only uses lcdtest on Linux, and does not provide
   binaries.  Steven Wills has compiled lcdtest for Windows:
     http://steve.mouf.net/blog/?p=631
 
 
-## Acknowledgements:
+Acknowledgements:
 
   Ian Morgan provided a patch to enable key repeat.
   Valerio Felici provided the manual page.
 
 
-## License:
+License:
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 3 as
@@ -116,4 +107,3 @@ stuck on or off.  lctest uses the SDL library.
 
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
