@@ -1,5 +1,6 @@
 # Explanation
 This is a complete  copy of the source  codes  from  http://www.brouhaha.com/~eric/software/lcdtest/ 
+
 Since the author's  website is currently  unavailable,  the  source  codes have been  moved  to  github.
 
 
@@ -8,7 +9,8 @@ Since the author's  website is currently  unavailable,  the  source  codes have 
 lcdtest: LCD monitor test pattern generator
 
 Copyright 2005, 2007, 2010 Eric Smith <eric@brouhaha.com>
-$Id: README 44 2010-01-26 06:28:14Z eric $
+
+> $Id: README 44 2010-01-26 06:28:14Z eric $
 
 
 lcdtest is a utility to display LCD monitor test patterns.  It may be
@@ -19,16 +21,16 @@ stuck on or off.  lctest uses the SDL library.
 
 ## Usage:
 
-  lcdtest [options]
+      lcdtest [options]
 
 
 ## Options:
 
-  --help         get list of command keys
-  --list-modes   list available video resolutions
-  --window       display in a window rather than full screen
-  -x <count>     use a video mode with the specified horizontal resolution
-  -y <count>     use a video mode with the specified vertical resolution
+      --help         get list of command keys
+      --list-modes   list available video resolutions
+      --window       display in a window rather than full screen
+      -x <count>     use a video mode with the specified horizontal resolution
+      -y <count>     use a video mode with the specified vertical resolution
 
 
 ## Operation:
@@ -74,10 +76,10 @@ stuck on or off.  lctest uses the SDL library.
 ## Dependencies:
 
   libSDL:
-    http://www.libsdl.org/
+  http://www.libsdl.org/
 
   SFont and the 14P_Arial_Plain_Red.png font (included):
-    http://www.linux-games.com/sfont/
+  http://www.linux-games.com/sfont/
 
 
 ## Incompatible library versions:
